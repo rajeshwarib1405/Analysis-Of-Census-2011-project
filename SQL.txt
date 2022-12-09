@@ -1,0 +1,2349 @@
+--CLASS-1
+--SQL (Structured Query Language)
+--PL/SQL (Programming Language /Structured Query Language)
+
+--Q.What is Data?
+--Collection of Meaningful information
+--or
+--Collection of record information.
+
+--Q.What is database?
+--It is collection of data in file format.
+--for ex: Word, Excel,Text file and notepad etc.
+
+--Q.What is RDBMS(Relational database Management system)
+--It is collection of table related information.
+--It stored huge amount of data and to extract that data we have simple language called SQL.
+--There is relation between two or more tables.
+
+--Q.what is table ?
+--Table is collection rows and columns.
+
+
+--Diffrent flavours 
+--1.SQL server 
+--2.Toad 
+--3.SQL developer 
+--4.Teradata
+--5.MySql
+--6.Postgrey SQL etc.
+
+
+--There are two types of databases
+--1.System Defined DB
+--2.User Defined DB.
+
+--There are four types of system DB.
+--1.Master
+--2.Model
+--3.msdb
+--4.temp DB
+
+--whenever you will open SSMS then by default DB is 'master'.
+
+
+--SQL is not case sensitive language.
+
+
+--colurs 
+--Blue - system defined keywords
+--for ex: create , database,use etc
+
+--Pink -System defined functions 
+--min,max ,avg,count
+
+--Q.How to create databse?
+Create database JobHunt9
+
+--Q.How to navigate user created DB?
+Use JobHunt9
+
+
+--Q.How to execute SQL statements?
+--1.by using Execute tab from top bar.
+--2.by pressing F5 key from keyboard.
+
+--comments
+--1.Single line comment (--statement)
+--2.Multiple line comment(/* mutiple line */)
+--Ex:
+/* my name is SQL 
+i am useful to operate any RDBMS
+by using SQL we can perform analysis */
+
+--Data Types 
+--Types of Data type in SQL
+--1.Numeric Data Type
+--2.Approximate Numeric Data Type
+--3.String or Time Data Type
+--4.Date and Time Data type 
+
+--CLASS-2
+--1.Numeric Data Type
+--1.BIT
+--it stores value 0 or 1.
+
+declare @b bit
+set @b =2111
+print(@b)
+
+--2.TINYINT
+--It will store value ranging from 0 to 255.
+-- 128 64 32 16 8 4 2 1  
+
+declare @a tinyint
+set @a =256
+print(@a)
+
+--3.SMALLINT
+--It will store value ranging from -32768 to 32767.
+
+declare @c smallint
+set @c =32767
+print(@c)
+
+--4.Decimal
+--An exact fixed point number.
+
+declare @d Decimal 
+set @d =2561234567890.1234567890
+print(@d)
+
+--O/P -2561234567890
+
+--5.INT
+--It stores an integer value ranging from -2147483648 to 2147483647(-2 Power 31 to 2 power 31 -1 )
+
+declare @e int 
+set @e =2147483647
+print(@e)
+
+--O/P -2147483647
+
+--6.BIGINT
+--It will store value ranging from -2 Power 63 to 2 power 63 -1 
+declare @f bigint 
+set @f =2147483647234567812
+print(@f)
+
+--O/P -2147483647234567812
+
+--2.Approximate nuemric data type
+--1.float
+--It will store floating point numbers ranging from -1.8E to 308 to 1.8E to 308
+
+declare @g float 
+set @g =2147554
+print(@g)
+
+--O/P -2.14748e+028
+
+--2.Real 
+--It will store floating point numbers ranging from -3.40 E to 38 to 3.40 E to 38
+
+declare @h real 
+set @h =214755412345678902134567890
+print(@h)
+
+--3.String or charecter data types
+--1.char
+--A-Z,a-z,0-9 and special charecter.
+--Static memory allocation and its size is 8000 charecters
+
+--ename char(40) - aman - 4 blocks 36 blocks will be waistage and unneccesarly processer will process this data.
+
+ declare @value char(8000)
+ set @value ='AMAN@@@'
+ print @value
+ print datalength(@value)
+ print len(@value)
+
+ --O/P
+ --AMAN@@@                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+--8000
+--7
+
+ --2.varchar
+--A-Z,a-z,0-9 and special charecter.
+--Dynamic memory allocation and its size is 8000 charecters
+
+--ename char(40) - aman - 4 blocks  their is no waistage and it will release remaining free blocks of data.
+
+ declare @value1 varchar(8000)
+ set @value1 ='AMAN@@@'
+ print @value1
+ print datalength(@value1)
+ print len(@value1)
+
+ --O/P
+--AMAN@@@
+--7
+--7
+
+--3.nchar
+--A-Z,a-z,0-9 and special charecter.
+--Static memory allocation and its size is 4000 charecters
+--In this data type 1 charecter will occupy 2 bytes of memory 
+
+ declare @value2 nchar(4000)
+ set @value2 ='AMAN'
+ print @value2
+ print datalength(@value2)
+ print len(@value2)
+
+ --O/P
+--AMAN                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+--8000
+--4
+
+--4.nvarchar
+--A-Z,a-z,0-9 and special charecter.
+--Dynamic memory allocation and its size is 4000 charecters.
+--In this data type 1 charecter will occupy 2 bytes of memory 
+
+
+ declare @value3 nvarchar(4000)
+ set @value3 ='AMAN'
+ print @value3
+ print datalength(@value3)
+ print len(@value3)
+
+ --O/P
+--AMAN
+--8
+--4
+
+--4.Date time data type 
+--1.date 
+-- You can insert date in multiple format like YYYY/MM/DD.
+
+declare @date date
+set @date = '2022-12-12'
+print(@date)
+
+--2.Time 
+--It will allow you to insert the time and format is HH:MM:SS:MS
+
+declare @time time
+set @time = '2022-05-18 23:59:59.000'
+print(@time)
+
+--CLASS-3 
+--3.DATETIME
+--DATETIME(fsp)	A date and time combination. Format: YYYY-MM-DD hh:mm:ss. 
+--The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. 
+--Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time
+
+--4.TIMESTAMP
+--A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). 
+--Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. 
+--Automatic initialization and updating to the current date and time can be specified 
+--using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition
+
+--Q.How to create table?
+Create Table Student(S_ID int,
+S_Name varchar(20),
+S_Loc varchar(10),
+S_scholorship int)
+
+--Q.How To select the table?
+select * from Student
+
+-- star (*) - all the columns from table 
+
+--we can select Specific columns from table 
+select S_ID,S_Name from Student
+
+--How to insert the data into the table?
+--By Using two methods we can insert the data into table.
+--METHOD -I
+insert into Student values (1,'Praveen','Pune',1200)
+insert into Student values (2,'Mohan','Mumbai') -- Exeption --Column name or number of supplied values does not match table definition.
+insert into Student values (2,'Mohan','Mumbai','') -- '0'  value int data type  'blank space' for varchar
+insert into Student values (3,'Sohan','',1100)  --  'blank space' for varchar
+
+
+select * from Student
+
+--METHOD-II
+--It will allow you to insert the values as per your choice but condition is that you need to follow the column order/sequence defined you.
+
+insert into Student (S_ID,S_Name) values (4,'Shital')
+insert into Student (S_ID,S_Name) values ('Shenna',5) --Exception --Conversion failed when converting the varchar value 'Shenna' to data type int.
+
+insert into Student (S_Name,S_ID) values ('Shenna',5)
+
+insert into Student(S_scholorship,S_ID,S_Name,S_Loc) values(1500,6,'Ram','Indore')
+
+--SQL Claues 
+--SQL Clauses used to filter the data from table by providing specific condition.
+--SQL Clauses are used for filtering purpose.
+--Whenever we want to use clauses then we can use along with SQL operator.
+
+--There are four types of clauses are their in SQL
+--1.Where
+--2.Order by 
+--3.Group by
+--4.Having
+
+
+select * from Student where S_ID= 6
+
+--SQL Operators
+--1.Comparision
+--2.Logical
+--3.Arithmatic 
+--4.IN & NOT IN
+--5.BETWEEN & NOT BETWEEN
+--6.LIKE --VVIMP***
+
+
+--1.Comaparision
+--It used to compare the condition provided into 'WHERE' clause.
+-- = (equal to)
+-- > (greater than)
+-- < (less than)
+-- >= (greater than equal to)
+-- <= (less than euqal to)
+-- <> or != (not euql to)
+--Int value
+select * from Student where S_ID =1 
+select * from Student where S_ID >1 
+select * from Student where S_ID <2 
+select * from Student where S_ID >=5 
+select * from Student where S_ID <=5 
+
+select * from Student where S_ID <>3 
+select * from Student where S_ID !=3 
+
+--Varchar value
+select * from Student where S_Name ='Ram'
+select * from Student where S_Name > 'Ram'
+select * from Student where S_Name <'Ram'
+select * from Student where S_Name >='Ram' 
+select * from Student where S_Name <='Ram' 
+
+select * from Student where S_Name <>'Ram' 
+select * from Student where S_Name !='Ram' 
+
+--2.Logical operators
+ --It used to comapre the two inputs logically based upon the operation specified into WHERE clause.
+ --1.AND
+ --2.OR
+ --3.NOT
+
+
+ --1.AND
+ --It is just multiplication
+
+ --AND operation
+ --A		B		O/P
+ --1		1		1
+ --1		0		0
+ --0		1		0
+ --0		0		0
+
+ --A		B		O/P
+ --TRUE		TRUE	TRUE
+ --TRUE		False	False
+ --False	True	False
+ --False	False 	False
+
+ select * from Student where S_ID =1 and S_scholorship=1200 
+ 
+ select * from Student where S_ID =2 and S_Name='Praveen' 
+ 
+  --2.OR
+ --It is used to comapre two inputs logically , it will act as addition operation.
+
+ --OR operation
+ --A		B		O/P
+ --1		1		1
+ --1		0		1
+ --0		1		1
+ --0		0		0
+
+ --A		B		O/P
+ --TRUE		TRUE	TRUE
+ --TRUE		False	TRUE
+ --False	True	TRUE
+ --False	False 	False
+ select * from Student where S_ID =1 or S_ID=7
+ Select * from Student where S_ID =2 or S_Name='Praveen' 
+
+
+ --3.NOT
+ --It will perform negation
+ --It will perform opposite operation.
+ --Not is used with IN , BETWEEN and LIKE operator.
+
+ --NOT operation
+ --INPUT		O/P
+ --1			0
+ --TRUE			False
+
+select * from Student where S_ID not in(1,3,5)
+
+--CLASS-4
+--1.WHERE 
+--Where clause is used for filtering purpose.
+--Where Clause is used with comparisoin,Logical and Arithmatic operator.
+
+create table Employee(EID int,E_Name varchar(20),E_LOc varchar(20),E_Sal int)
+
+insert into Employee values (1,'Amit','Pune',2000)
+insert into Employee values (2,'Sumit','Mumbai',2500)
+insert into Employee values (3,'Rohit','HYD',3000)
+insert into Employee values (4,'Mohit','Banglore',4000)
+insert into Employee values (5,'Ajit','Chennai',3500)
+insert into Employee values (6,'Meena','Indore',4500)
+insert into Employee values (7,'Tina','Jaipur',5000)
+insert into Employee values (10,'Amit_patil','Udaipur',6700)
+
+--Display employee details whose salary is greater than 3000.
+select * from Employee where E_Sal > 3000
+
+--2.Order by 
+--It is used to display the content of column either in Ascending or descending order.
+--If we have not mentioned anything after ORDER BY clause then by default it will Ascending(ASC).
+--It will use notation ASC for Ascending and DESC for Descending.
+
+
+--Syntax: Order by col1,col2....Coln
+
+select * from Employee order by E_LOc ;
+select * from Employee order by E_Name,E_LOc;
+
+
+select * from Employee order by E_LOc ASC;
+select * from Employee order by E_Name,E_LOc ASC;
+
+
+select * from Employee order by E_LOc DESC;
+
+select * from Employee order by EID DESC;
+select * from Employee order by E_Sal,E_Name ASC;
+select * from Employee order by E_Name DESC ,E_LOc ;
+
+
+--3.Arithmatic Operator 
+--It is used to perform arithmatic operation.
+--We have multiple operators in SQL i.e +,-,*,/ and %.
+
+select * from Employee
+
+--Alias 
+--by using alias in SQL we can specify user defined names to any column in table.
+
+select EID as EmployeeID from Employee
+
+select *, INC_E_Sal = E_Sal +1000  from Employee
+select *, DEC_E_Sal = E_Sal -100  from Employee
+
+--YER_Package of an employee
+select *,YER_PACKAGE = E_sal *12 from Employee
+
+--display E_Name And E_Loc in one column
+select *,E_Name + ' '+E_LOc as NameCityDetails  from Employee
+
+--How to calculate per day sal of employee?
+select * , Perday = E_sal/30 from Employee
+--How to display even records from table?
+select * from Employee where EID%2=0 
+--How to display odd records from table?
+select * from Employee where EID%2=1
+
+--Class-5
+--IN and NOT IN
+--This operator allow you to navigate or point out the values specified into the list.
+--NOT IN operator will perform the reverse or opposite operation as IN operator.
+
+select * from Employee where EID in (1,5,8)
+
+select * from Employee where E_LOc in ('Pune','HYD')
+
+select * from Employee where EID not in (1,5,8)
+
+select * from Employee where E_LOc not in ('Pune','HYD')
+
+
+--BETWEEN and NOT BETWEEN
+--This operator allow you to display the records between range which you have specified.
+--This operator will work with logical operator.
+
+select * from Employee where EID between 4 and 6
+
+select * from Employee where EID not between 4 and 6
+
+
+--LIKE 
+--LIKE operator will allow you to search pattern from given string or number.
+--LIKE operator mostly used with WHERE clause.
+--LIKE operator most often used with character and we can also used with integer.
+
+
+--LIKE Operator used with following wildcards for seaarching pattern
+--1.% - It represents one or multiple characters.
+--2.'_' - It represents one or single charecter/substitute for exactly one charecter 
+--3.[charlist]% - Any single charecter from that list from starting
+--  %[charlist] - Any single charecter from that list from ending
+--  %[charlist]% - Any single charecter from that list from starting and ending
+--4. [^charlist] or [!charlist] - any single charecter not in charlist
+
+--'A%' --Start with A charecter and it will display all the values or names which start with A.
+--'%A' --Ends with A charecter and it will display all the values or names which ends with A.
+--'%A%'--Anywhere inside the record/Column if A charecter is present.
+
+--It will display all the name which starts with A
+select * from Employee where E_Name like 'A%'
+
+
+select * from Employee where E_Name like '%A'
+
+select * from Employee where E_Name like '%A%'
+
+--Names which start with A,T,S
+select * from Employee where E_Name like '[ATS]%'
+
+--Not start with A,T and S
+select * from Employee where E_Name like '[^ATS]%'
+
+--Name strat with T and ends with A.
+select * from Employee where E_Name like 'T%A'
+
+--Names with second letter 'O'
+select * from Employee where E_Name like '_o%'
+
+--If we want to display the name in range between A - F
+select * from Employee where E_Name like '[A-F]%'
+
+--Want to display names which have '_' in between
+select * from Employee where E_Name like '%[_]%'
+
+
+--SQL Aggregate Functions
+--1.Avg()
+--2.Count()
+--3.TOP()
+--4.Min()
+--5.Max()
+--6.Sum()
+
+--1.Avg()
+--This function is used to find the average value of column from table.
+select * from Employee
+
+select *,AVG(e_sal) as AverageSal from Employee 
+--Exception
+--Column 'Employee.EID' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.
+
+
+select AVG(e_sal) as AverageSal from Employee 
+
+
+--2.count
+--Count() function returns the number of records from a table .
+--Count function requires 1 arguments.
+
+select COUNT(*) as No_of_Records from Employee
+
+select COUNT('scodeen') --O/P = 1
+
+select COUNT('1234567890') --O/P = 1
+
+select COUNT('scodeen') + COUNT('1234567890') --O/P = 2
+
+select COUNT('1','2','3') --O/P = exception --The COUNT function requires 1 argument(s).
+
+--Count employess whose salary is greater than 3000
+select COUNT(*) from Employee where E_Sal > 3000 
+
+--Class -5
+--3.Top()
+--It will allow  to select TOP records from table.
+--It will be useful when we are dealing with large amount of data/records from table.
+
+select top 100 * from Employee where EID in (1,3,4,5)
+
+--4.min()
+--Min() function returns the smallest/minimum value of selected column.
+
+select * from Employee order by E_Sal 
+--First minimum salary
+select MIN(E_sal) as MinSal from Employee
+
+--Second Minimum salary
+select MIN(E_sal) as secondMinSal from Employee where E_Sal >(select MIN(e_sal) from Employee) --2500
+--or
+select MAX(E_sal) as secondMinSal from Employee
+where E_Sal iN (select top 2 E_Sal from Employee )
+
+--Third minimum salary
+select MIN(E_sal) as ThirdMinSal from Employee 
+where E_Sal >(select MIN(e_sal) from Employee
+where E_Sal >(select MIN(e_sal) from Employee ) )
+--oR
+select MAX(E_sal) as ThirdMinSal from Employee
+where E_Sal iN (select top 3 E_Sal from Employee )
+
+
+--4.max()
+--Max() function returns the Highest/maximum value of selected column.
+
+select * from Employee order by E_Sal desc
+--First minimum salary
+select max(E_sal) as MinSal from Employee 
+
+--Second Minimum salary
+select max(E_sal) as secondMinSal from Employee where E_Sal <(select max(e_sal) from Employee) 
+--or
+select min(E_sal) as secondMinSal from Employee
+where E_Sal iN (select top 2 E_Sal from Employee order by E_Sal desc )
+
+--Third minimum salary
+select max(E_sal) as ThirdMinSal from Employee 
+where E_Sal <(select max(e_sal) from Employee
+where E_Sal <(select max(e_sal) from Employee ) )
+--oR
+select min(E_sal) as ThirdMinSal from Employee
+where E_Sal iN (select top 3 E_Sal from Employee order by E_Sal desc )
+
+--6.SUM()
+--Sum function returns total sum of numeric value of particular column.
+--Sum function always accept numeric values.
+
+select * from Employee
+
+select SUM(E_Sal) as TotalSalary from Employee
+
+select SUM(E_loc) from Employee --Exception -- Operand data type varchar is invalid for sum operator.
+
+select max(E_LOC) from Employee
+
+
+--Distinct
+--It will allow you to find unique or distinct values from a column.
+
+--Synatx: distinct(columname)
+select * from INFORMATION_SCHEMA.TABLES
+select distinct(E_Name) from Employee
+
+--Q.How will you avoid duplicate records from column?
+
+--NULL Values
+--Suppose we have four column in table and we are inserting data into three columns and in fourth column SQL server will add 'NULL'
+--value by default.
+--NULL Values are treated diffrently from other values.
+--NULL values are used as placeholder for unknown or inapplicable values,
+
+insert into Student (S_ID,S_scholorship) values(7,2500)
+
+select * from Student
+--It is not possible to test NULL values by using SQL operators.
+--To test NULL values from atble in SQL we have special functions i.e.
+--1.IS NULL
+--2.IS NOT NULL
+
+
+select * from Student where S_Loc is null
+
+select * from Student where S_Loc is not null
+
+select * from Student where S_Loc = NULL
+
+--SQL constraints 
+--Constraints are used to mantain the accuracy and integrity of the table.
+--Constraints are used to limit the type of data which we want to insert into a column.
+
+--Various types of constraints in SQL
+--1.Primary key(PK)
+--2.Foreign Key
+--3.Unique Key
+--4.Null Key
+--5.Default Key
+--6.Check Key
+
+--1.Primary Key 
+--NOT NULL + UNIQUE
+--PK uniquely identifies each record in table.
+--PK is most oftenly used with numeric values.
+
+Create Table PK_TEST(PID int primary key,
+PK_Name varchar(20),
+PK_City varchar(20))
+
+insert into PK_TEST values (1,'Mohan','Indor')
+insert into PK_TEST values (2,'Mohan','Indor')
+insert into PK_TEST values (NULL,'Mohan','Indor')
+
+
+select * from PK_TEST
+
+--CLASS -6
+--2.Foreign Key
+--A foreign key in one table points to PRIMARY KEY in another table.
+--It ensures that all the values in a columns are diffrenet.
+--One NULL value can be applied at column level.
+--A FK key is a collection of columns in one table that refers to the PK in another table.
+--Parent(PK)---Child(FK)
+
+Create table department(DID int primary key ,DEPT_NAME varchar(20))
+
+insert into department values (1,'ECE')
+insert into department values (2,'ME')
+insert into department values (3,'Civil')
+insert into department values (4,'Electrical')
+insert into department values (5,NULL)
+
+select * from department
+
+create table student_Details(S_ID int primary key ,
+Firstname varchar(20),
+City varchar(20),
+DID int foreign key references department(DID))
+
+insert into student_Details values(1,'Sumit','Mumbai',4)
+insert into student_Details values(2,'Rohit','Jaipur',5) --Exception --Violation of PRIMARY KEY constraint 'PK__student___A3DFF16D05560143'. Cannot insert duplicate key in object 'dbo.student_Details'. The duplicate key value is (2).
+insert into student_Details values(2,'Rohit','Jaipur',NULL)
+insert into student_Details values(3,'Shika','Mandi',NULL)
+insert into student_Details values(4,'Meera','Indore',5)
+
+select * from department
+select * from student_Details
+
+
+
+--If we want to see the complete structure of the table then we can use SP_HELP Table_Name
+SP_HELP student_Details
+
+--3.Unique Constraints
+--UNIQUE Constraints allow us to insert unique records in a column of defined Table.
+--One NULL value can be inserted at column level.
+
+Create table UNIQUE_TEST(UID int Primary Key, First_NAME varchar(20) unique, City Varchar(20))
+
+SP_HELP UNIQUE_TEST
+
+
+insert into UNIQUE_TEST values (1,'Rohan','PUNE')
+insert into UNIQUE_TEST values (2,'Rohan','Mumbai')
+--Exception : Violation of UNIQUE KEY constraint 'UQ__UNIQUE_T__5A96EF6C48D55983'. Cannot insert duplicate key in object 'dbo.UNIQUE_TEST'. The duplicate key value is (Rohan).
+insert into UNIQUE_TEST values (2,NULL,'Mumbai')
+insert into UNIQUE_TEST values (3,NULL,'Indore')
+
+select * from UNIQUE_TEST
+
+--4.NOT NULL
+--NOT NULL constaint restricts NULL value to column in table.
+--NOT NULL
+
+
+create table NOTNULL_TEST(NID int primary key , FIrst_NAME varchar(20) NOT NULL, City varchar(20))
+
+insert into NOTNULL_TEST values (1,'Rohan','Pune')
+insert into NOTNULL_TEST values (2,NULL,'Pune')
+--exdeption : Cannot insert the value NULL into column 'FIrst_NAME', table 'JobHunt9.dbo.NOTNULL_TEST'; column does not allow nulls. INSERT fails.
+insert into NOTNULL_TEST values (3,'','Pune')
+insert into NOTNULL_TEST values (4,'','Mumbai')
+
+create table NOTNULL_TEST1(NID int primary key , FIrst_NAME varchar(20) unique NOT NULL, City varchar(20))
+insert into NOTNULL_TEST1 values (3,'','Pune')
+insert into NOTNULL_TEST1 values (4,'','Mumbai')
+select * from NOTNULL_TEST1
+
+--5.check key constraint
+--Check Key constraint restricts or linit value on column.
+
+create table Check_Test(CID int primary Key ,
+C_NAME varchar(20) unique,
+C_Loc varchar(20) NOT NULL,
+Age int check (age >=18),
+City varchar(20) check (city not in ('Mumbai','Pune','Nagpur'));
+
+insert into Check_Test values (1,'Ravi','Jaipur',18)
+insert into Check_Test values (2,'Amit','Leh',17)
+--Exception:The INSERT statement conflicted with the CHECK constraint "CK__Check_Test__Age__4CA06362". The conflict occurred in database "JobHunt9", table "dbo.Check_Test", column 'Age'. 
+insert into Check_Test values (2,'Amit','Leh',19)
+
+
+select * from Check_Test
+
+--Q. Create Table in which City column restricts cities Mumbai,Pune and Nagpur?
+
+--6.Default Constraint
+--Default contsraints is used to insert a default value into a column.
+
+create table Default_Test(DID int primary Key,
+D_NAME varchar(20) Unique,
+D_LOC varchar(20) DEFAULT 'PUNE',
+Pincode varchar(20) DEFAULT '411061')
+
+--Method -I
+Insert into Default_Test values (1,'Priya','Mumbai',000001)
+Insert into Default_Test values (2,'Sumit',default,default)
+Insert into Default_Test values (4,'amit')
+--exception : Column name or number of supplied values does not match table definition.
+select * from Default_Test
+
+--Method -II
+Insert into Default_Test (DID,D_NAME)values (3,'Rohit')
+
+--CLASS-7
+--AUTO INCREMENT
+--It Is used to create the unique values inside the column on defined table.
+
+--Syntax: Column_name IDENTITY(Start,Diffrence of Next value)
+--Ex: Student_ID identity (1111,4) --- 1115,1119,1123
+
+create Table Bank_Account_Details(ACCNT_NO int primary key identity (1000000001,1),
+Bank_User_Name Varchar(20),
+User_City varchar(20))
+
+select * from Bank_Account_Details
+
+insert into Bank_Account_Details values ('Praveen','Patna')
+insert into Bank_Account_Details values ('Sumit','Kota')
+
+create Table Account_number(ACCNT_NO int primary key identity (1000000001,1),
+Bank_User_Name Varchar(20) unique ,
+User_City varchar(20))
+
+
+
+insert into Account_number values ('Praveen','Patna')
+insert into Account_number values ('Rohit','kota')
+
+
+select * from Account_number
+
+
+--3.Group by 
+--Group By clauese is used in conjuction with aggreagte functions to group by and result set by one or more columns.
+
+--Syntax:
+--SELECT COL_NAME1,COL_NAME2,....COL_NAMEn
+--Aggregate_Function(COL_NAME1,COL_NAME2,....COL_NAMEn)
+--FROM Table_Name
+--WHERE COL_NAME1,COL_NAME2,....COL_NAMEn
+--GROUP BY COL_NAME1,COL_NAME2,....COL_NAMEn
+
+create table Orders(OID int primary key , Customer_Name varchar(20),Order_Price int,O_Category Varchar(20))
+
+insert into Orders values (1,'Kate',1100,'sport')
+insert into Orders values (2,'Mark',2000,'Fruits')
+insert into Orders values (3,'Tim',1800,'sport')
+insert into Orders values (4,'Miller',1500,'Grocery')
+insert into Orders values (5,'Steve',2200,'Mobile')
+insert into Orders values (6,'Bill',4000,'sport')
+insert into Orders values (7,'Pat',2500,'Mobile')
+insert into Orders values (8,'Shon',3500,'sport')
+insert into Orders values (9,'Jinal',6000,'Fruits')
+insert into Orders values (10,'Paine',8000,'Grocery')
+
+
+select * from Orders
+--How i can identify Unique order category?
+select distinct(O_Category) from Orders
+
+--How to calculate sum value of order price for each category?
+select O_Category, SUM(Order_Price) from Orders where O_Category ='Mobile'
+
+--Order_category SumOfOrderPrice
+--Sport				10400
+--Fruits			8000
+--Grocery			9500
+--Mobile			4700
+
+--We can resolve the above output by using group by clause
+
+select O_Category, SUM(Order_Price) as SumOfOrderPrice  from Orders group by O_Category
+
+--How to display minimum order price for each order category?
+select O_Category, min(Order_Price) as SumOfOrderPrice  from Orders group by O_Category
+
+select * from Orders order by O_Category asc
+
+--How to count the number of customers in particular order category?
+
+select O_Category,COUNT(*) as Custor_category_Count from Orders group by O_Category 
+
+select O_Category,COUNT(*) as Custor_category_Count from Orders where O_Category ='Grocery' group by O_Category 
+--4.HAVING Clause
+--Having Clause added to SQL because We cant use WHERE Clause with aggreagte function.
+--Having Clause we can use after group by
+--NOTE: WHERE Clause we can use before Group by
+
+--Syntax: 
+
+--Syntax:
+--SELECT COL_NAME1,COL_NAME2,....COL_NAMEn
+--Aggregate_Function(COL_NAME1,COL_NAME2,....COL_NAMEn)
+--FROM Table_Name
+--WHERE COL_NAME1,COL_NAME2,....COL_NAMEn
+--GROUP BY COL_NAME1,COL_NAME2,....COL_NAMEn
+--HAVING Aggreagte_Function (COL_NAME) operator value 
+
+
+--Display only those Orders category whose customer base is greater than 2?
+select O_Category,COUNT(*) as Custor_category_Count from Orders group by O_Category 
+having COUNT(*) > 2
+
+--Display only those category whose sum value is grater than 10000?
+select O_Category, SUM(Order_Price) as SumOfOrderPrice  from Orders group by O_Category
+having SUM(Order_Price) > 10000
+
+--CLASS-8
+--SQL Statements
+--1.DML(Data Manipulation Language)
+--2.DDL(Data Defination Language)
+--3.DCL(Data Control Language)
+--4.TCL(Transaction Control Language)
+
+--1.DML(Data Manipulation Language)
+--These statements are used to play with table data which is stored inside the table.
+--SELECT ,INSERT,UPDATE and DELETE
+
+--SELECT
+--This keyword/Staements comes in DML category and which is used to select the data from table or any data.
+SELECT 8888 --O/P - 8888
+
+select * from Student
+
+--If we use the below select statements then what will be the O/P?
+select 8 from Student  --O/P - it will display 8 in output and it depends upon the table record count so here 7 records in Student table so 7 time it display '8'.
+
+select 'SCODEEN' --O/P --SCODEEN
+
+--INSERT
+--This keyword or statement will allow you to insert the data into table.
+
+--INSERT INTO Table_name Values (1,'abc','def')
+
+--UPDATE
+--UPDATE Statement is used to update existing records from a table.
+--While updating column if you have not mentioned a specific condition then it will modify/update the complete column.
+
+--Synatx:
+--UPDATE Table_Name SET Col1= value,col2=value ...Coln = value 
+--WHERE SOME_COLUMN = SOME_VALUE
+
+--Single column update 
+select * from Student
+
+update Student set S_scholorship = 1100  where S_ID =2
+
+--Multiple column update 
+update Student set S_Loc ='Kota' , S_scholorship = 2200 where S_ID = 4
+
+--Multiple rows update
+update Student set S_Loc= 'Delhi' where S_ID in (5,7)
+
+--DELETE
+--DELETE Statement is used to delete the rows from table.
+--DELETE Statemnt delete the records from a table ROW-by-ROW.
+--DELETE Statemnt will not delete table structure.
+
+
+--SYNTAX 
+--DELETE FROM Table_Name 
+--WHERE SOME_COLUMN= SOME_Value 
+
+select * from student_Details
+--DELETE a particular row from table 
+DELETE FROM student_Details where S_ID=4
+
+--IF we use DELETE with only table and without condition then it will delete the complete records from table.
+delete from student_Details
+
+
+--2.DDL(Data Defination Language)
+--These statements are used to play with Table related activities.
+--CREATE,DROP,TRUNCATE,ALTER and RENAME
+
+--CREATE 
+--This Statement is used to create table , database views ,Store procedures , triggers etc.
+--While using create statement then we need mention what we are creating i.e if we are creating a table then we need to mention Table as keyword.
+
+--Syntax:
+--Create table Table_name 
+--Create view View_name 
+--create trigger Tr_name
+--create procedure Pr_name
+--Create database DB_name 
+
+--DROP
+--DROP Statement is used to delete table and its structure completely.
+--By using we can DROP table , database, views ,Store procedures , triggers etc.
+--We cant use SQL Clauses ijn this Statement.
+
+--Syntax
+--DROP Table Table_name
+--DROP Database Database_Name
+
+select * from student_Details
+
+insert into student_Details values(1,'abc','def',2)
+
+DROP table student_Details
+
+create database Sample_DB
+
+
+Drop database Sample_DB
+
+--TRUNCATE
+--Truncate statement is used to delete the complete records from a a table at one time.
+--Truncate statement will not allow you to use SQL Clauses.
+--Truncate statement delete only table records not table structure?
+
+--Syntax
+--Syntax
+--Truncate Table Table_name
+
+select * from Contact1
+
+truncate table Contact1 
+
+--Table Back Up 
+--We can take table back up by using below SQL statement/Syntax .
+
+--Syntax:
+--SELECT * INTO TABLE_NAME_BCK FROM TABLE_NAME 
+
+select * from Student
+
+--Back up
+select * into STUDENT_BCK from Student
+
+select * from STUDENT_BCK
+
+--Q.What is the diffrence between Delete ,drop and truncate?
+
+--CLASS-9
+--DATABASE Backup
+--While taking database backup we need to mention the path where we need to take backup.
+
+BACKUP DATABASE jobhunt9 to disk = 'E:\.bak'
+
+--INSERT INTO SELECT 
+--This statement is used to copy from one table and insert into another table.
+--But condition is that , it requires same data type in source and target tables.
+
+create table emp ( eid int, ename varchar(20),city varchar(20),Dept varchar(20))
+
+create table emp_HR ( eid int, ename varchar(20),city varchar(20),Dept varchar(20))
+
+
+insert into emp values (1,'Sita','indore','HR')
+insert into emp values (2,'Geeta','Delhi','Fin')
+insert into emp values (3,'Mita','Pune','Admin')
+insert into emp values (4,'Rita','Mumbai','HR')
+insert into emp values (5,'Amit','Kota','Fin')
+insert into emp values (6,'Sumit','Chennai','SCM')
+insert into emp values (7,'Rohit','Sangali','Admin')
+insert into emp values (8,'Vinit','Satara','HR')
+insert into emp values (9,'Jeet','Raipur','HR')
+
+select * from emp where Dept ='HR'
+
+INSERT INTO emp_HR select * from emp where Dept ='HR'
+
+select * from emp_HR
+
+--ALTER 
+--By using ALTER Statement we can play/manipulate with table attributes/fields/columns.
+--By using alter we can perform multiple operations
+--1.We can ADD one or more columns at atime into table.
+--2.We can DELETE one or more columns at atime into table.
+--3.We can Increase or Decrease size of columns into table.
+--4.We can change the data type of column .
+--5.We can drop constraints from column into table.
+--6.We can define constraints 
+
+--Syntax:
+--ALTER TABLE TABLE_NAME ADD COLUMN_NAME1,COLUMN_NAME2,......COLUMN_NAME3 - to add column 
+--ALTER TABLE TABLE_NAME DROP COLUMN_NAME1,COLUMN_NAME2,......COLUMN_NAME3 - to delete column 
+--ALTER TABLE TABLE_NAME ADD  CONSTRAINT PK Primary Key(Column_Name) -- It will add constraint.
+
+
+
+Create Table ALTER_TEST(AID int,ANME varchar(10))
+
+--Add single column into table
+alter table alter_test add city varchar(10)
+--Add Multiple column into table
+alter table alter_test add Loc varchar(10),PIN int
+
+
+select * from ALTER_TEST
+
+
+--Delete single column from table.
+alter table alter_test drop column pin
+
+--Delete Multiple columns from table.
+alter table alter_test drop column city,loc
+
+
+--If you want to check structure of table then we have to use SP_HELP table_name
+SP_HELP alter_test
+
+--increse column size
+alter table alter_test alter column anme varchar(50)
+
+--decrease column size
+alter table alter_test alter column anme varchar(5)
+
+insert into ALTER_TEST values (1,'Rita','Pune',411027)
+insert into ALTER_TEST values (2,'Meena','Pune',411064)
+insert into ALTER_TEST values (3,'Riya','Pune',411054)
+
+select * from ALTER_TEST
+
+alter table alter_test alter column anme varchar(4)
+
+--NOTE: If we are trying to reduce the size of column oncw the data has been inserted into tha particular column
+--		otherwise it will through excpetion
+
+select * from ALTER_TEST
+
+--alter data type of column.
+alter table alter_test alter column Anme varchar(20)
+alter table alter_test alter column AID int
+
+sp_help alter_test
+
+
+--Add constraint
+alter table alter_test alter column AID int NOT NULL 
+
+alter table alter_test add constraint PK primary key (AID) --NOT NULL + UNIQUE
+
+truncate table alter_test
+
+--Drop constarint 
+
+alter table alter_test drop constraint PK
+
+--RENAME
+--In SQL we have in-built procedure to renamethe column from table.
+--WE dont have keyword RENAMEin SQL Server 
+
+--SQL developer and Teradata we have RENAME keyword.
+--While changing the column name it will give Caution saying 
+--Caution: Changing any part of an object name could break scripts and stored procedures.
+
+--Syntax:
+SP_RENAME 'TABLE_NAME.COLUMN_NAME(OLD)','COLUMN_NAME(NEW)'
+
+SP_RENAME 'ALTER_TEST.ANME','A_NAME'
+
+select * from ALTER_TEST
+
+--CLASS-10
+--TO Rename the tables in database
+--Syntax
+SP_RENAME 'DATABASE_NAME.DBO.TABLE_NAME(OLD)','TBALE_NAME(NEW)'
+
+SP_RENAME 'pydev.dbo.canada','Africa'
+
+--INFORMATION SCHEMA
+--By using information schema we can easily identify
+--1.How many tables are their in database
+--2.How many columns are their in table
+--3.Which schemas are used by table etc 
+
+select * from INFORMATION_SCHEMA.TABLES
+
+select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME like 'a%' -- table name which starts with A
+
+select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME ='Account_number'
+
+--Duplicate records 
+--How to identify duplicate records from table?
+--1.By using  PK in select list we can find out duplicate records.
+
+--syntax:
+--select <PK1>,<PK2>.....<PKn>,count(*) as Duplicate from Table_Name group by <PK1>,<PK2>.....<PKn> having count(*) > 1
+
+--2.If PK is not defined on a table then we have to include all the columns from a table into a select list and we can find out the duplicate records.
+--select <col1>,<col2>.....<coln>,count(*) as Duplicate from Table_Name group by <col1>,<col2>.....<coln> having count(*) > 1
+
+create table DUPLICATE_TEST(DID int,NAME varchar(20),CITY varchar(20))
+
+insert into DUPLICATE_TEST values (1,'Shila','Mumbai')
+insert into DUPLICATE_TEST values (2,'Mila','Sangli')
+insert into DUPLICATE_TEST values (3,'Tina','Miraj')
+insert into DUPLICATE_TEST values (4,'Mona','Satara')
+insert into DUPLICATE_TEST values (5,'Shona','Kolaphur')
+insert into DUPLICATE_TEST values (5,'Shona','Indore')
+select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME ='DUPLICATE_TEST'
+
+select * from DUPLICATE_TEST
+
+select DID,NAME,CITY,COUNT(*) as Duplicate from DUPLICATE_TEST group by DID,NAME,CITY having COUNT(*) >1
+
+select DID,NAME,COUNT(*) as Duplicate from DUPLICATE_TEST group by DID,NAME having COUNT(*) >1
+
+--JOIN
+--JOIN is used to return a value from both the tables but condition is , it should have common column in both the tables.
+--JOIN is the keyword which is used in SQL statements to extract the data from two or more tables.
+
+--JOIN = CROSS PRODUCT + CONDITION
+
+--Types of JOINS
+--1.JOIN / INNER JOIN
+--2.OUTER JOIN 
+			--A.LEFT JOIN / LEFT OUTER JOIN
+			--B.RIGHT JOIN / RIGHT OUTER JOIN
+			--C.FULL JOIN / FULL OUTER JOIN
+--3.SELF JOIN
+--4.EQUI-JOIN
+--5.CROSS JOIN
+
+--1.JOIN/INNER JOIN
+--This join returns the only matching records from tables.
+--JOIN = CROSS PRODUCT + CONDITION
+
+--synatx
+--SELECT */COLUMN_NAME(s) FROM Table_Name1 INNER JOIN / JOIN Table_Name2 ON Table_Name1.COLUMN_NAME = Table_Name2.COLUMN_NAME
+
+
+create table A (AID int , ANAME varchar(20))
+insert into A values (1,'Sumit')
+insert into A values (2,'Amit')
+insert into A values (3,'Mohit')
+insert into A values (4,'Rohit')
+insert into A values (5,'Akash')
+
+Create Table B (BID int ,BNAME varchar(20),AID int)
+
+insert into B values (11,'Reena',3)
+insert into B values (12,'Meena',4)
+insert into B values (13,'Sheena',5)
+insert into B values (14,'Mona',6)
+insert into B values (15,'Kona',7)
+
+
+select * from A
+select * from B
+
+select * from A JOIN B ON A.AID =B.AID
+
+select * from A JOIN B ON A.AID =B.AID;
+
+select * from A INNER JOIN B ON A.AID =B.AID;
+
+--CLASS-10
+create table C (CID int , Age int, BID int)
+
+insert into C values (21,15,11)
+insert into C values (22,17,12)
+insert into C values (23,19,13)
+insert into C values (24,18,17)
+insert into C values (25,22,18)
+
+select * from A
+select * from B
+select * from C
+--Join three tables 
+select A.AID,ANAME,Age from A join B ON A.AID=B.AID Join C on B.BID = C.BID
+
+--2.Outer Join 
+--1.LEFT JOIN / LEFT OUTER JOIN 
+--ALL the records from left table and matching records from right table and for non-matching records it will display as NULL values.
+
+--synatx
+--SELECT */COLUMN_NAME(s) FROM Table_Name1 INNER LEFT JOIN / LEFT OUTER JOIN Table_Name2 
+--ON Table_Name1.COLUMN_NAME = Table_Name2.COLUMN_NAME
+select * from A
+select * from B
+
+select * from A LEFT join B ON A.AID = B.AID
+select * from B LEFT join A ON A.AID = B.AID
+
+
+--2.Right JOIN / Right OUTER JOIN 
+--ALL the records from right table and matching records from right table and for non-matching records it will display as NULL values.
+
+--synatx
+--SELECT */COLUMN_NAME(s) FROM Table_Name1  RIGHT JOIN / RIGHT OUTER JOIN Table_Name2 
+--ON Table_Name1.COLUMN_NAME = Table_Name2.COLUMN_NAME
+select * from A
+select * from B
+
+select * from A RIGHT join B ON A.AID = B.AID
+select * from B RIGHT join A ON A.AID = B.AID
+
+--3.Full Outer Join
+--It will display the complete records from both the tables.
+--If the records are not matching then from both the tables it will show NULL value.
+
+--synatx
+--SELECT */COLUMN_NAME(s) FROM Table_Name1 Full JOIN / FULL OUTER JOIN Table_Name2 
+--ON Table_Name1.COLUMN_NAME = Table_Name2.COLUMN_NAME
+
+select * from A FULL join B ON A.AID = B.AID
+select * from B Full join A ON A.AID = B.AID
+
+--3.SELF JOIN 
+--Join a table itself with equal or non-equal condition.
+
+create table SELFJOIN_TEST (EID int ,ENAME varchar(20),MANAGER int)
+
+insert into SELFJOIN_TEST values (1,'Ashok',3)
+insert into SELFJOIN_TEST values (2,'Mohan',5)
+insert into SELFJOIN_TEST values (3,'Sohan',1)
+insert into SELFJOIN_TEST values (4,'Reeta',2)
+insert into SELFJOIN_TEST values (5,'Meet',4)
+
+select * from SELFJOIN_TEST
+
+--Need to display Emaployee name along with Its Manager Name.
+select * from SELFJOIN_TEST S1,SELFJOIN_TEST S2 where S1.MANAGER =S2.EID
+
+select S1.EID,S1.ENAME,S2.ENAME as MANAGER from SELFJOIN_TEST S1,SELFJOIN_TEST S2 where S1.MANAGER =S2.EID
+--EID	ENAME	MANAGER
+--1		Ashok	Sohan
+--2		Mohan	Meet
+--3		Sohan	Ashok
+--4		Reeta	Mohan
+--5		Meet	Reeta
+
+--4.Equi-join 
+--If we are not using JOIN keyword while joining the two tables then that will be considered as Equi_join.
+
+select * from A,B where A.AID =B.AID
+
+select * from A join B on A.AID =B.AID
+
+--5.Cross Join 
+--it is cartesian product.
+
+--For Ex: if we have 3 records in table1 and 4 records in table2 then it will multiply and display the result.
+--i.e. 3*4 = 12 records 
+
+select * from A ,B
+
+select * from A cross join B  where A.AID =B.AID
+
+
+--SET Operator
+--1.UNION
+--2.UNION ALL
+--3.INTERSECT
+--4.EXCEPT /MINUS(SQL Developer)
+
+--1.UNION
+--UNION Operator is used to combine the result set of two or more SELECT statements or Tables.
+--UNION operator select distinct values by default.
+
+--Note:
+--1.Each select staement or table within UNION must have same number of columns.
+--2.Columns must have similar data types.
+--3.Columns in SELECT list or table must be in same order.
+
+--Ex:
+--A = [1,2,3,4,5]
+--B = [3,4,5,6,7]
+
+--A union B =O/P = [1,2,3,4,5,6,7]
+
+create table set1 (S_ID int,SNAME varchar(20))
+create table set2 (S_ID int,SNAME varchar(20))
+
+insert into set1 values (1,'A')
+insert into set1 values (2,'B')
+insert into set1 values (3,'C')
+insert into set1 values (4,'D')
+insert into set1 values (5,'E')
+
+alter table set1 add City varchar(10)
+
+insert into set2 values (3,'C')
+insert into set2 values (4,'D')
+insert into set2 values (5,'E')
+insert into set2 values (6,'F')
+insert into set2 values (7,'G')
+
+select * from set1
+union
+select * from set2
+
+
+select S_ID,SNAME from set1
+union
+select S_ID,SNAME from set2
+
+--2.Union all
+--This operator is used to combine two or more tables using SELECT statement when both tables having same number of columns.
+--Combine two or more tables with all the values, it means that it will allow duplicate values in it.
+
+
+select * from set1
+union all
+select * from set2
+
+--3.Intersection
+--It will return only distinct values from two or more tables.
+
+select * from set1
+intersect
+select * from set2
+
+--4.Except 
+--It will diplay the diffrence in records.
+
+--for ex: A= [1,2,3,4] and B=[3,4,5,6]
+
+--Then A except B = O/P = [1,2]
+--Then B except A = O/P = [5,6]
+
+select * from set1
+except
+select * from set2
+
+
+select * from set2
+except
+select * from set1
+
+--Date and Time Function 
+--GETDATE
+
+select GETDATE ()  -- Todays date
+
+select GETDATE () - 1   -- yesterday's date
+
+select GETDATE () + 1   -- Tommorrow date
+
+--There various diffrent types of functions in SQL to modify or perform any date related task
+--1.datediff()
+--2.datepart()
+--3.dateadd()
+
+--1.Datediff function
+--The datediff() function requires 3 arguments
+--If we provide more than 3 arguments then it will throgh an exception
+
+--syntax: datediff(interval, date1,date2)
+
+--interval
+--Year,YYYY, YY = Year
+--Quarter,QQ, Q = Quarter
+--Month - MM, M = Month
+--DAYOFYEAR - day of the year
+--DAY,dy,y = day
+--WEEK,WW,WK = weekday
+--HOUR,HH = hour
+--MINUTE,MI,N = Minute
+--SECOND,SS,S = Second 
+--MILISECOND , MS = Millisecond
+
+
+select DATEDIFF(q,GETDATE(),getdate()+365)
+
+--Q.How to calculate your age?
+select DATEDIFF(HOUR,'1990/08/15',getdate())
+
+
+select GETDATE()
+
+--CLASS-11
+create table Acct_Details1(Acct_no int primary key identity(11112881,1),
+Acct_name varchar(20),
+Acct_open_date datetime,
+Branch varchar(20))
+
+select * from Acct_Details
+
+insert into Acct_Details values ('Amit','2022-06-08','Pune')
+insert into Acct_Details values ('Sumeet','2021-06-30','Mumbai')
+insert into Acct_Details values ('Amit','2022-06-01','Indor')
+insert into Acct_Details values ('Vinit','2019-09-19','Jaipur')
+insert into Acct_Details values ('Mohit','2015-05-23','Delhi')
+insert into Acct_Details values ('Sohan','2016-04-17','Chennai')
+insert into Acct_Details values ('Mohan','2017-03-14','Banglore')
+insert into Acct_Details values ('Rohan','2022-06-15','Hyderabad')
+insert into Acct_Details values ('Ajit','2013-06-22','Warngal')
+insert into Acct_Details values ('Meena','2018-10-23','Nagpur')
+
+insert into Acct_Details1 values ('Shina',GETDATE(),'Sangli')
+insert into Acct_Details1 values ('Mona',GETDATE(),'Nagpur')
+
+
+
+
+
+select GETDATE()
+
+
+
+
+--Accounts opened during current year
+select * from Acct_Details
+
+
+select * from Acct_Details where Acct_open_date like '2022%'
+
+select *,DATEDIFF(YY,Acct_open_date,GETDATE()) as Account_age from Acct_Details where DATEDIFF(YY,Acct_open_date,GETDATE())=0
+
+Sp_help Acct_Details
+
+
+
+
+
+--Account Opened during cuurnt yesr and current month?
+--Number of accounts open during the cuurrent year?
+
+
+
+
+
+
+
+
+--2.datepart()
+--This will allow you to display the date oart
+
+--syntax: Datepart(interval,Date/Column_name)
+
+select GETDATE()
+
+select DATEPART(MM, GETDATE())
+
+select * from Acct_Details1
+
+select *,DATEPART(YY,Acct_open_date) from Acct_Details1
+
+--3.Dateadd()
+--It will allow you add the dates.
+--It will accepts 3 arguments.
+
+
+--Synatx:DATEADD(interval,value,date/Column_name)
+
+
+select GETDATE() + 30
+
+select DATEADD(HH,30,GETDATE())
+
+--NULL Value Replacement
+--We can replace NULL values from column by using three function.
+--1.ISNULL
+--2.COALESCE()
+--3.Case()
+
+--1.ISNULL
+--This function will help us to replace NULL value with any other user defined value.
+
+--syntax: isnull(col,string)
+
+Create table NULL_TEST(NID int, N_NAME varchar(20),Manager varchar(20))
+
+insert into NULL_TEST values (1,'Shital','Meenal')
+insert into NULL_TEST values (2,'Amit',NULL)
+insert into NULL_TEST values (3,'Kate','Mark')
+insert into NULL_TEST values (4,'Ajit',NULL)
+insert into NULL_TEST values (5,'Sumit','Trocy')
+
+select * from NULL_TEST
+
+select *,ISNULL(Manager,'No Manager') As Manager_Details  from NULL_TEST 
+select NID,N_NAME,ISNULL(Manager,'No Manager') As Manager_Details  from NULL_TEST 
+
+--2.Coalesce
+--It will find or locate first appearance of Non-NULL value from row.
+--If it is unable to find NON-NULL value then it always returns NULL value.
+--If we have Space or balnks in columns instead of NULL values then it will display Space or blanks because space will be considered as string.
+
+create table coalesce_test(CID int,FN varchar(20),MN varchar(20),LN varchar(20), sal int)
+
+insert into coalesce_test values (1,'Amit',NULL,NULL,2000)
+insert into coalesce_test values (2,NULL,'Rohit',NULL,2000)
+insert into coalesce_test values (3,NULL,NULL,'Patil',2000)
+insert into coalesce_test values (4,'Sumit','Rohit','Pawar',2000)
+insert into coalesce_test values (5,NULL,NULL,NULL,2000)
+insert into coalesce_test values (6,NULL,'','More',3000)
+
+select * from coalesce_test
+
+select coalesce(FN,MN,LN) as NON_NULL_VALUE from coalesce_test
+
+select coalesce(cid,FN,MN,LN) as NON_NULL_VALUE from coalesce_test
+
+select coalesce(FN,MN,LN,cid) as NON_NULL_VALUE from coalesce_test
+
+--Class-12
+--3.Case
+--Case statement identify the condition and returns a value.
+--It will work like IF-ELSE statement.
+--If Else condition is not defined then it will show NULL value.
+
+--Syntax:
+--Case
+--		When condition then result1
+--		When condition then result1
+--		When condition then result1
+--ELSE 
+--		Result
+--END 
+		
+
+select * from NULL_TEST
+
+
+select NID,N_NAME, CASE	When Manager IS NULL then 'NOMANGER'Else Manager END from NULL_TEST
+
+
+--Update 
+update NULL_TEST SET Manager =
+								case 
+								when Manager IS NULL then 'Kate'
+								When Manager ='Trocy' then 'Sumit'
+								else Manager 
+								end 
+
+select * from NULL_TEST
+
+--Exist and Not Exist 
+--Exist is used to check whether the result of co-related or nested query is empty or not.
+
+--Exist(s)
+--TRUE : S has atleast one records
+--FALSE : S has no records
+
+--NOT Exist(s)
+--TRUE : S has no records
+--FALSE : S has atleast one records
+
+
+Create table customer (CID Varchar(5) primary key, Name varchar(20),Loc varchar (20))
+
+insert into customer values ('C1','Kate','Sydeny')
+insert into customer values ('C2','Mark','Perth')
+insert into customer values ('C3','Tony','Newyork')
+insert into customer values ('C4','Trocy','Melbourne')
+insert into customer values ('C5','Aman','London')
+insert into customer values ('C6','Ali','Dhaka')
+
+
+create table product(OID int primary key,CID varchar(5),product varchar(20) )
+
+
+insert into product values (1,'C1','Mobile')
+insert into product values (2,'C4','Computer')
+insert into product values (3,'C2','Watch')
+insert into product values (4,'C1','Shoes')
+insert into product values (5,'C3','Cloths')
+insert into product values (6,'C4','Headphones')
+
+select * from customer
+--I need to know how many customer has been purchased any product .
+select * from customer;
+select * from product;
+
+select * from customer C  --IQ
+where  exists 
+(select * from product P where C.CID =P.CID) --OQ
+
+
+select * from customer C  --IQ
+where not exists 
+(select * from product P where C.CID =P.CID) --OQ
+
+--Q. What is the diffrence between Sub query and co-relational query?.
+
+--OVER CLAUSE
+--Over clause is used to determine which row/column has been applied to function.
+--Over clause is used along with partition by clause.
+
+
+--syntax:
+Function () OVER (PARTITION NY col1,col2 etc)
+
+--We can use functions like count(),AVG(),SUM(),Min(),max(),rank(),dense_rank(),rownumber  etc 
+
+
+
+
+create table OVER_TEST(OID int , FirstName varchar(20),Gender varchar(2),salary int)
+
+insert into OVER_TEST values (1,'Riya','F',3500)
+insert into OVER_TEST values (2,'Meena','F',1500)
+insert into OVER_TEST values (3,'Sumit','M',2500)
+insert into OVER_TEST values (4,'Amit','M',3600)
+insert into OVER_TEST values (5,'Rohit','M',3000)
+insert into OVER_TEST values (6,'Sheetal','F',3800)
+insert into OVER_TEST values (7,'Priyanka','F',5500)
+insert into OVER_TEST values (8,'Sumit','M',4500)
+insert into OVER_TEST values (9,'Vinit','M',6500)
+insert into OVER_TEST values (10,'Praveen','M',7500)
+
+--aggregated data
+select gender , COUNT(*) as TOTAL,AVG(salary) as AVG1,MAX(salary)as MAXSAL,MIN(salary) as MINSAL,SUM(salary) as SUMSAL
+from OVER_TEST
+
+--Group by 
+
+select OID,FirstName,O1.Gender,TOTAL,AVG1,MAXSAL,MINSAL,SUMSAL from OVER_TEST O1
+join
+(select gender , COUNT(*) as TOTAL,AVG(salary) as AVG1,MAX(salary)as MAXSAL,MIN(salary) as MINSAL,SUM(salary) as SUMSAL
+from OVER_TEST
+ group by Gender) as Gen
+on O1.Gender =Gen.Gender
+ 
+select OID,FirstName,Gender,salary,
+count(gender) over (Partition by gender) as Totalcount,
+avg(salary) over (Partition by gender) as AVG1,
+max(salary) over (Partition by gender) as MAXSAL,
+Min(salary) over (Partition by gender) as MINSAL,
+SUM(salary) over (Partition by gender) as SUMSAL,
+(max(salary) over (Partition by gender) -salary) as DiffSal,
+SUM(salary) over (Partition by gender order by oid) as RUNNINGSAL
+
+from OVER_TEST
+
+--CLASS-13
+--Rank and Dense_rank
+--It will return a rank starting at 1 ordering rows and imposed by order by clause.
+--Order by clause is mandatory and Partition by clause is optional.
+
+--Diffrence in Rank and Dense_rank
+--Rank function skips ranking if their is a same value or number
+--Dense_rank --It will not skips ranking if their is a same number. 
+
+--Rank synatx:
+--RANK() OVER (ORDER BY col1,col2....Coln ASC/DESC[PARTITION BY col1,col2.....coln ])
+
+--DENSE_Rank synatx:
+--DENSE_RANK() OVER (ORDER BY col1,col2....Coln ASC/DESC[PARTITION BY col1,col2.....coln ])
+
+
+--Ex:
+--600/ 555,550,550,545
+--Dense_Rank - 1, 2,2,3 
+--rank - 1,2,2,4
+
+
+select * from INFORMATION_SCHEMA.TABLES
+
+select min(E_Sal) from employee where E_Sal in (select top 2 E_Sal from employee order by E_Sal desc)
+
+select *,RANK() over (order by E_sal desc) as Ranks from employee
+
+select *,DENSE_RANK() over (order by E_sal desc) as Ranks from employee 
+
+select *, E_Sal,DENSE_RANK() over (order by E_sal desc) as Ranks from employee where DENSE_RANK() over (order by E_sal desc) =2
+--Exception : Windowed functions can only appear in the SELECT or ORDER BY clauses.
+
+--CTE (Common Table expression)
+--It is temporary result set.
+--It will store temporary result set to make use in main query.
+
+--It can be referres within SELECT , INSERT ,UPDATE and DELETE statements immediately after CTE expression
+
+--Syntax:
+--with CTE_NAME (col1,col2,...col3)
+--As
+--(CTE_query)
+
+
+with secondmax AS
+(select *,DENSE_RANK() over (order by E_sal desc) as Ranks from employee)
+select * from secondmax where Ranks =2 
+
+--Q.How to delete duplicate records? -- CTE
+--Q.How to find duplicate records from table? 
+
+--ROW_NUMBER
+--It will return sequential number starting at 1.
+--Order by clause required and PARTITION BY clause is optional.
+
+--Synatx:
+--ROW_NUMBER() OVER (order by col1,col2...col3[partition by col1,col2....col3])
+ 
+select * from employee
+
+select *,ROW_NUMBER() over (order by eid) from employee
+select *,ROW_NUMBER() over (partition by eid order by eid) as rownumber from employee
+
+with duplicate as
+(select *,ROW_NUMBER() over (partition by eid order by eid) as rownumber from employee)
+select * from DUPLICATE where rownumber > 1
+
+
+with deleteduplicate as
+(select *,ROW_NUMBER() over (partition by eid order by eid) as rownumber from employee)
+delete from deleteduplicate where rownumber > 1
+
+
+--SQL SERVER FUNCTIONS 
+--1.UPPER()
+--Upper() function convert column value into UPPER case.
+--It will accept 1 argument.
+
+--syntax: UPPER('text'/Column)
+
+select UPPER('scodeen')
+
+select *,upper(E_Name) as NAME from employee
+
+--2.LOWER()
+--LOWER() function convert column value into LOWER case.
+--It will accept 1 argument.
+
+--syntax: LOWER('text'/Column)
+
+select LOWER('SCODEEN')
+
+--3.substring 
+--Subsstring function used to extract specific length of charecter from string or columns from tables.
+--It will accept 3 arguments .
+
+--syntax: substring ('text'/column,start,end[length] )
+
+
+select *,SUBSTRING(E_Name,1,1) from employee
+
+
+select *,SUBSTRING(E_Name,2,len(E_Name)),LEN(E_Name) from employee
+
+--4.DATALENGTH() and LEN()
+--These function returns number of bytes used to reprsent expression
+
+
+--Synatx: Datalenght('text'/Column) ,len('text'/Column)
+
+sp_help employee
+select * from employee
+
+select *,DATALENGTH(E_Name) from employee
+select *,len(E_Name) from employee
+
+
+alter table employee alter column E_name char(20)
+
+--CLASS-13
+--5.CONCAT() , CONCAT with + and CONCAT_WS()
+--The CONCAT() function adds two or more strings together.
+--Syntax: CONCAT(string1,string2....)
+
+select * from employee
+select CONCAT('amit',' ','Patil')
+
+SP_HELP employee
+select CONCAT(E_name,E_loc) as NAMELOC from employee
+
+select LEN('Amit                Pune')
+select CONCAT(EID,' ',E_LOc,' ',E_Sal) as NAMELOC from employee
+
+
+--The + operator allows you to add two or more strings together.
+--syntax:string1 + string2 + string_n
+select E_NAME + E_LOC from employee
+
+select cast (EID as varchar)+ E_LOC from employee
+
+--The CONCAT_WS() function adds two or more strings together with a separator.
+--syntax : CONCAT_WS('separator', string1/Col_name, string2/Col_Name, ...., string_n/NCol_name)
+
+select CONCAT_WS('@',EID,E_LOc) from employee
+
+--6.LTRIM(), RTRIM() and TRIM()
+--The LTRIM() function removes leading spaces from a string.
+--The RTRIM() function removes trailing spaces from a string.
+--TRIM() function removes leading as well as trailing spaces from string.
+select LEN(ltrim('              scodeen'))
+
+select datalength(Rtrim('              scodeen                             '))
+
+select datalength(trim('              scodeen                             '))
+
+select LEN('            ') --0
+select datalength('            ')--12
+
+
+--7.Reverse()
+--The REVERSE() function reverses a string and returns the result.
+--synatx : REVERSE(string)
+
+select REVERSE('PUNE')
+
+--8.Round
+--The ROUND() function rounds a number to a specified number of decimal places.
+--Syntax : ROUND(NUMERIC_EXPRESSION, length, [(function)])
+
+--NUMERIC_EXPRESSION : it takes the number to be roundoff. 
+--Length : the number of digits that we want to round off.
+--		   if length is +ve then rounding is applied after decimal and if  length is -ve the before decimal
+--function : is used to indicate rounding or truncation operation. 
+--			 0 -indicates rounding and non-zero indicates truncation, by default it is 0.
+
+select ROUND(348.4558,-2)
+
+--9.REPLACE() 
+--The REPLACE() function replaces all occurrences of a substring within a string, with a new string.
+--Note: The search is not case-insensitive.
+
+--Syntax - REPLACE(string/Col_NAME, old_string/Old_VALUE, new_string/New_VALUE)
+
+-- A-a , B-b meaning is same in replace function.
+
+select REPLACE ('LONAVALA','A','u')
+
+select REPLACE('sco  en','  ','e')
+
+select *, REPLACE(E_Name,'A','N') from employee
+--10.REPLICATE()
+--The REPLICATE() function repeats a string a specified number of times.
+--Syntax :REPLICATE(string, integer)
+
+select REPLICATE('Scodeen ', 10)
+
+--11.CONVERT()
+--The CONVERT() function converts a value (of any type) into a specified datatype.
+
+--Syntax :CONVERT(data_type[(length)], expression/Col_NAME, [(style)])
+
+
+--Style
+--Converting datetime to character:
+--Without		With 	  Input/Output					Standard
+--century		century
+--0				100		  mon dd yyyy hh:mi AM/PM		Default
+--1				101		  mm/dd/yyyy					US
+--2				102		  yyyy.mm.dd					ANSI
+--3	            103		  dd/mm/yyyy	                British/French
+--4	            104		  dd.mm.yyyy	                German
+--5				105	      dd-mm-yyyy					Italian
+--6				106		  dd mon yyyy	                -
+--7	            107	      Mon dd, yyyy	                -
+--8	            108	      hh:mm:ss	                    -
+--9	            109	      mon dd yyyy hh:mi:ss:mmmAM (or PM)	Default + millisec
+--10	        110	      mm-dd-yyyy	                USA
+--11			111		  yyyy/mm/dd					Japan
+--12			112	      yyyymmdd						ISO
+--13			113	      dd mon yyyy hh:mi:ss:mmm		Europe (24 hour clock)>
+--14			114	      hh:mi:ss:mmm					24 hour clock
+--20			120	      yyyy-mm-dd hh:mi:ss			ODBC canonical (24 hour clock)
+--21			121	      yyyy-mm-dd hh:mi:ss.mmm		ODBC canonical (24 hour clock)
+-- 				126	      yyyy-mm-ddThh:mi:ss.mmm		ISO8601
+-- 				127	      yyyy-mm-ddThh:mi:ss.mmmZ		ISO8601 (with time zone Z)
+-- 				130	      dd mon yyyy hh:mi:ss:mmmAM	Hijiri
+-- 				131	      dd/mm/yy hh:mi:ss:mmmAM		Hijiri
+
+
+Create table DateOfJoining (ID int,NAME varchar(20), DOJ datetime)
+
+insert into DateOfJoining values (1,'Sumit','2018-06-09 09:30:18.720')
+insert into DateOfJoining values (2,'Rohit','2017-09-01 10:00:18.720')
+insert into DateOfJoining values (3,'Amit','2019-08-02 09:00:00.000')
+insert into DateOfJoining values (4,'Rohan','2014-12-01 08:30:18.720')
+insert into DateOfJoining values (5,'Mohan','2016-11-02 10:30:18.720')
+
+select convert(varchar,GETDATE())
+
+
+select * from DateOfJoining
+
+select * ,CONVERT(varchar ,DOJ,101) as ConvertedDate from DateOfJoining
+
+--12.CAST()
+--The CAST() function converts a value (of any type) into a specified datatype.
+--Syntax :CAST(expression/Column AS datatype [(length)])
+
+select CAST (GETDATE() as varchar)
+select convert (varchar,GETDATE(),101)
+
+select * ,cast(DOJ as varchar) as ConvertedDate from DateOfJoining
+
+
+--13.CHARINDEX()
+--The charindex() function searches for a substring in a string and returns position.
+--if the substring is not found, this function returns 0.
+
+--syntax : CHARINDEX(Substring,string,[start])
+
+select CHARINDEX('g','ScodeenGlobal.com')
+
+select CHARINDEX('e','eelleellee')
+
+--Q.How will you find out the position of charecter 'g' in SCODEEN?
+
+--Q.HOW To find domain or server from email column?
+
+
+select CHARINDEX('@','amit.patil@Scodeen.com')
+
+
+select * from Student
+
+update Student set emails= 
+					case 
+					when S_ID=1 then 'praveen@gmail.com'
+					when S_ID=2 then 'Mohan@yahoo.com'
+					when S_ID=3 then 'Sohan@Outlook.com'
+					when S_ID=4 then 'Shital@Hotmail.com'
+					when S_ID=5 then 'Shenna@Rediff.com'
+					when S_ID=6 then 'Ram@Infosys.com'
+					Else emails 
+					end 
+
+select * from student
+
+select * , CHARINDEX('@',emails) from Student  -- Position
+
+select LEN(emails) from Student --Length
+
+select substring('praveen@gmail.com',9,LEN('praveen@gmail.com')) -- part of string
+
+
+select * , substring (emails ,CHARINDEX('@',emails)+1,LEN(emails)) as DOAMIN from Student
+
+
+
+--CLASS-14
+--VIEW 
+--It is virtual table.
+--It is exact copy of original table.
+--We can pwerform DDL and DML operation.
+
+--syntax:
+--Create view vVIEW_NAME
+--AS
+--SQL Statements
+
+--Account
+--Customer
+--Loans 
+--------Common column account_Number 
+--I need Account holder name , City, barnch and types of loans availed 
+
+
+select * from Student
+
+--How to create view?
+create view vStudentDetails
+as
+select S_ID,S_NAME,emails from Student
+
+--How to select view?
+select * from vStudentDetails
+
+--How to drop view ?
+DROP view vStudentDetails
+
+--NOTE : Inside view we can use only one select statement, If we take two select statements then it will through an exception.
+
+create view twotables 
+as
+select * from Student;
+select * from employee;
+
+--exception :Incorrect syntax near the keyword 'select'.
+
+select * from vStudentDetails
+
+select * from INFORMATION_SCHEMA.VIEWS 
+
+
+select * from Student
+--Insert record view
+insert into Student values (7,'Bharat','Jaipur',2800,'Bharat@lti.com')
+
+insert into vStudentDetails values (8,'Neelam','neelam@tcs.com')
+
+--alter view 
+alter view vStudentDetails
+as
+select S_ID,S_NAME,S_scholorship,emails from Student
+
+select * from vStudentDetails
+
+--update view
+update vStudentDetails SET S_scholorship = 3000 where S_ID =5
+
+--CLASS-15
+--Store procedure (SP)
+--It is a block of code to perform certain actions whenever it is needed.
+--It is working like function.
+
+--we can create two types of store procedure
+--1.without parameter
+--2.with parameter
+
+--syntax
+--create proc/procedure spSTORE_PROCEDURE
+--[{@parameter} <data type> <size>]
+--AS
+--BEGIN
+
+--SQL statements
+
+--END
+
+--1.Without parameter
+create proc spStudentDetails
+AS
+Begin
+select S.S_ID,S.S_Name,S.emails,D.DEPT_NAME from Student S join department D ON S.DID = D.DID
+end 
+
+--How to execute SP
+--1.by using SP name we execute
+spStudentDetails
+
+--2.by using exec keyword
+exec spStudentDetails
+
+--3.by using keyword execute
+execute spStudentDetails
+
+--we can alter SP 
+Alter proc spStudentDetails
+AS
+Begin
+select S.S_ID,S.S_Name,S_Loc,S.emails,D.DEPT_NAME from Student S join department D ON S.DID = D.DID
+end 
+
+--2.WIth parameters
+create proc summetion(@a int,@b int)
+as
+begin
+
+	declare @sum int
+	set @sum = @a + @b 
+	print @sum
+end
+
+--Execute SP with parameters
+summetion 20,30
+
+--Q.Create SP with parameter for calculator ? 
+
+--Diffrence between view and SP
+--		View											store Procedure
+--1.Views does not accept parameters				1.SP accepts Parameters
+--2.Views can contain only single SELECT query		2.SP contains several SELECT statements with condition like if-else etc.
+--3.By using views we cant perform modification		3.SP perform modification to one or more tables.
+--	to multiple tables.
+--4.Views act as virtual table						4.SP acts as function.
+
+create proc spTwoTables
+as
+begin
+select * from Student
+select * from department
+end
+
+spTwoTables
+
+--CLASS-16
+--Triggers
+--Triggers fired automatically, Once you perform any INSERT , DELETE and UPDATE operation on table.
+--Triggers are also known as special kind of SP.
+
+--syntax
+--create trigger tr_Trigger_Name
+--ON Table_Name
+--For INSERT/DELETE/UPDATE
+--AS
+--BEGIN
+
+--SQL STatements
+
+--END
+
+
+create table emp1 (EID int,EMP_NAME varchar(20),Salary int ,Gender varchar(2))
+
+insert into emp1 values (1,'amit',2000,'M')
+insert into emp1 values (2,'Sumit',3000,'M')
+insert into emp1 values (3,'Rohit',4000,'M')
+insert into emp1 values (4,'Mohit',6000,'M')
+insert into emp1 values (5,'Praveen',2500,'M')
+
+select * from emp1
+
+--How to create trigger ?
+create trigger tr_INSERT
+on emp1
+for insert
+as 
+begin
+
+		select * from inserted
+END 
+
+--NOTE
+--Inserted table is special kind of table used by triggers and it is available only into the context of trigger.
+select * from inserted/deleted
+--1.It returns the copy of rows inserted or deleted or updated from table.
+--2.Structure of inserted/deleted table is identical or same on which table we are creating trigger.
+
+insert into emp1 values (6,'sheela',2580,'F')
+insert into emp1 values (7,'meena',2800,'F')
+insert into emp1 values (8,'priya',3200,'F')
+
+--How to drop trigger
+drop trigger tr_insert
+
+--delete trigger
+create trigger tr_DELETE
+on emp1
+for delete
+as 
+begin
+
+		select * from deleted
+END 
+
+select * from emp1
+
+delete from emp1 where eid =8
+
+
+create table info_audit (ID int identity ,rowupdate varchar(500))
+
+--Create trigger for inserted records
+create trigger tr_INSERT_Info
+on emp1
+for insert
+as 
+begin
+		declare @EID int
+		select @EID=EID from inserted
+
+		insert into info_audit values (CAST (@EID as varchar(4)) + ' ' + 'is inserted at '+ ' '+ CAST(GETDATE() as varchar(20)) )
+
+END 
+
+select * from emp1
+select * from info_audit
+
+--Create a trigger for deleted records
+
+create trigger tr_Deleted_Info
+on emp1
+for delete
+as 
+begin
+		declare @EID int
+		select @EID=EID from deleted
+
+		insert into info_audit values (CAST (@EID as varchar(4)) + ' ' + 'is deleted at '+ ' '+ CAST(GETDATE() as varchar(20)) )
+
+END 
+
+delete from emp1 where eid =7
+
+select * from info_Audit
+
+
+--update = delete + insert
+--Create update trigger for updated records.
+
+create trigger tr_update_Info
+on emp1
+for update
+as 
+begin
+		declare @EID int
+		select @EID=EID from inserted
+
+		insert into info_audit values (CAST (@EID as varchar(4)) + ' ' + 'is updated at '+ ' '+ CAST(GETDATE() as varchar(20)) )
+
+END 
+
+
+select * from emp1
+select * from info_audit
+update emp1 set salary = 5000 where eid =8
+
+
+--Index
+--Indexes are used to retrive the data from database more quickly or fast than anything.
+--the user can not see the indexes but they are used to speed up searches.
+
+--syntax
+--create index IX_Index_Name
+--On table name (col1,col2...etc)
+
+
+create table INDEX_TEST(ID int primary key ,IX_NAME varchar(20),IX_CITY varchar(20))
+
+select * from INDEX_TEST
+
+--How to find out indexes defined on table?
+SP_HELP INDEX_TEST
+
+--How to create index?
+--By default it always create non-clustered index.
+create index IX_NAME
+on INDEX_TEST(IX_NAME)
+
+
+--how to drop index?
+drop index INDEX_TEST.IX_NAME
+
+
+--types 
+--1.clustered index
+--2.non-clusterd index
+--1.Clustered Index
+--Whenever you apply clustered indexing in a table, it will perform sorting in that table only. 
+--You can create only one clustered index in a table like primary key. 
+--Clustered index is as same as dictionary where the data is arranged by alphabetical order. 
+--In clustered index, index contains pointer to block but not direct data. 
+
+--synatx
+--Create Clustered Index IX_Index_Name
+--ON Table Name (Col1,col2....etc)
+
+--2.Non_Clusterd Index
+--Non-Clustered Index is similar to the index of a book. 
+--The index of a book consists of a chapter name and page number, 
+--if you want to read any topic or chapter then you can directly go to that page by using index of that book. 
+--No need to go through each and every page of a book. 
+--The data is stored in one place, and index is stored in another place. 
+--Since, the data and non-clustered index is stored separately, then you can have multiple non-clustered index in a table. 
+
+--synatx
+--Create NonClustered Index IX_Index_Name
+--ON Table Name (Col1,col2....etc)
+
+--Diifrence between clustered and Non-Clusterd index
+--CLUSTERED INDEX	                                      NON-CLUSTERED INDEX
+--Clustered index is faster.							  Non-clustered index is slower.
+--Clustered index requires less memory for operations.	  Non-Clustered index requires more memory for operations.
+--In clustered index, index is the main data.	          In Non-Clustered index, index is the copy of data.
+--A table can have only one clustered index.	          A table can have multiple non-clustered index.
+--Clustered index store pointers to block not data.	      Non-Clustered index store both value and a pointer to actual row that holds data.
+
+
+select * from INDEXTEST
+
+--verify clustered and non-clustred index?
+sp_help INDEXTEST
+
+create clustered index IX_ID
+on INDEXTEST (ID)
+
+select * from indextest where ID = 9989
+
+
+select * from indextest where ename = 'employee9989'
+
+
+create nonclustered index IX_Index_NAME_1
+on indextest (ename)
+
+--ETL
+--Pivot
+--Un-Pivot
+
+
+
+

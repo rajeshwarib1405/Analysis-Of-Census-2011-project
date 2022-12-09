@@ -1,0 +1,5 @@
+--joining table
+
+ select District,State,
+ (select a.district,a.State.a.sex_ratio/1000,b.Population from project..data2 a inner join project..data1 b on a.district=b.district)
+
